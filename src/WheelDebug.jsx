@@ -1,0 +1,19 @@
+/* eslint-disable react/no-unknown-property */
+import PropTypes from 'prop-types';
+import { DEBUG_FLAGS } from './constants/physics';
+
+export const WheelDebug = ({ radius, wheelRef }) => {
+  return DEBUG_FLAGS.SHOW_WHEELS && (
+    <group ref={wheelRef}>
+      <mesh rotation={[0, 0, Math.PI/2]}>
+        <cylinderGeometry args={[radius, radius, 0.015, 16]}/>
+        <meshNormalMaterial transparent={ true } opacity={0.25}/>
+      </mesh>
+    </group>
+  )
+}
+
+WheelDebug.propTypes = {
+  radius: PropTypes.number.isRequired,
+  wheelRef: PropTypes.object.isRequired,
+};
